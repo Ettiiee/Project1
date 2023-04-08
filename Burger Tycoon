@@ -1,0 +1,76 @@
+local money = 0
+local restaurantLevel = 1
+local houseLevel = 1
+local carLevel = 1
+
+
+function cookBurger()
+   money = money + 10 * restaurantLevel
+end
+
+
+function upgradeRestaurant()
+   if money >= 100 * restaurantLevel then
+      money = money - 100 * restaurantLevel
+      restaurantLevel = restaurantLevel + 1
+   end
+end
+
+
+function upgradeHouse()
+   if money >= 200 * houseLevel then
+      money = money - 200 * houseLevel
+      houseLevel = houseLevel + 1
+   end
+end
+
+
+function upgradeCar()
+   if money >= 300 * carLevel then
+      money = money - 300 * carLevel
+      carLevel = carLevel + 1
+   end
+end
+
+
+local gui = Instance.new("ScreenGui")
+gui.Parent = game.Players.LocalPlayer:WaitForChild("PlayerGui")
+
+local burgerButton = Instance.new("TextButton")
+burgerButton.Parent = gui
+burgerButton.Position = UDim2.new(0.4, 0, 0.4, 0)
+burgerButton.Size = UDim2.new(0.2, 0, 0.1, 0)
+burgerButton.Text = "Cook a burger"
+burgerButton.MouseButton1Click:Connect(cookBurger)
+
+local restaurantButton = Instance.new("TextButton")
+restaurantButton.Parent = gui
+restaurantButton.Position = UDim2.new(0.1, 0, 0.8, 0)
+restaurantButton.Size = UDim2.new(0.1, 0, 0.05, 0)
+restaurantButton.Text = "Upgrade Restaurant"
+restaurantButton.MouseButton1Click:Connect(upgradeRestaurant)
+
+local houseButton = Instance.new("TextButton")
+houseButton.Parent = gui
+houseButton.Position = UDim2.new(0.4, 0, 0.8, 0)
+houseButton.Size = UDim2.new(0.1, 0, 0.05, 0)
+houseButton.Text = "Upgrade House"
+houseButton.MouseButton1Click:Connect(upgradeHouse)
+
+local carButton = Instance.new("TextButton")
+carButton.Parent = gui
+carButton.Position = UDim2.new(0.7, 0, 0.8, 0)
+carButton.Size = UDim2.new(0.1, 0, 0.05, 0)
+carButton.Text = "Upgrade Car"
+carButton.MouseButton1Click:Connect(upgradeCar)
+
+local moneyLabel = Instance.new("TextLabel")
+moneyLabel.Parent = gui
+moneyLabel.Position = UDim2.new(0.1, 0, 0.1, 0)
+moneyLabel.Size = UDim2.new(0.3, 0, 0.1, 0)
+moneyLabel.Text = "Money: " .. money
+
+local restaurantLabel = Instance.new("TextLabel")
+restaurantLabel.Parent = gui
+restaurantLabel.Position = UDim2.new(0.1, 0, 0.2, 0)
+restaurantLabel.Size = UDim2.new
